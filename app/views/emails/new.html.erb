@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <h1>Email Generator for Admins for Homestays.com</h1>
+
+  <%= form_with url: generate_email_path, method: :post, data: { turbo: false }, class: "form-horizontal" do |form| %>
+    <div class="form-group">
+      <%= form.label :name, "First Name", class: "control-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :lastname, "Last Name", class: "control-label" %>
+      <%= form.text_field :lastname, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :email_type, "Email Type", class: "control-label" %>
+      <%= form.select :email_type, options_for_select([['Welcome', :welcome], ['Password Reset', :password_reset]]), {}, { class: "form-control", id: "email_type_select" } %>
+    </div>
+    <div class="form-group" id="email_field" style="display: none;">
+      <%= form.label :email, "Email", class: "control-label" %>
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group" id="password_field" style="display: none;">
+      <%= form.label :new_password, "New Password", class: "control-label" %>
+      <%= form.password_field :new_password, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Generate Email", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const emailTypeSelect = document.getElementById("email_type_select");
+    const emailField = document.getElementById("email_field");
+    const passwordField = document.getElementById("password_field");
+
+    emailTypeSelect.addEventListener("change", function() {
+      if (emailTypeSelect.value === "password_reset") {
+        emailField.style.display = "block";
+        passwordField.style.display = "block";
+        emailField.querySelector('input').required = true;
+        passwordField.querySelector('input').required = true;
+      } else {
+        emailField.style.display = "none";
+        passwordField.style.display = "none";
+        emailField.querySelector('input').required = false;
+        passwordField.querySelector('input').required = false;
+      }
+    });
+  });
+</script>

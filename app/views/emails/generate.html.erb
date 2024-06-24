@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <h1>Generated Email</h1>
+
+  <div class="email-output">
+    <h2>Email Content</h2>
+    <div class="email-content">
+      <%= simple_format(@generated_email) %>
+    </div>
+  </div>
+
+  <%= link_to 'Generate another email', root_path, class: "btn btn-primary btn-generate-another" %>
+</div>

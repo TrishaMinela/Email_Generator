@@ -1,0 +1,29 @@
+/* app/assets/stylesheets/custom.css */
+.email-output {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .email-output h2 {
+    color: #343a40;
+    border-bottom: 2px solid #6c757d;
+    padding-bottom: 10px;
+  }
+  
+  .email-output p {
+    color: #495057;
+    line-height: 1.5;
+  }
+  
+  .email-output .email-content {
+    white-space: pre-wrap; /* To preserve formatting of multiline text */
+  }
+  
+
+  .btn-generate-another {
+    margin-bottom: 30px; /* Add space below the button */
+  }
